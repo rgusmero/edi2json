@@ -9,7 +9,18 @@ Requirements:
    - libedi 1.0.1+ <a href="http://code.google.com/p/libedi/">http://code.google.com/p/libedi/</a>
    - json module from CCAN <a href="http://ccodearchive.net/info/json.html">http://ccodearchive.net/info/json.html</a>
 
-Example usage:
+License: 
+	3-caluse BSD
+
+Author: 
+	Riccardo Gusmeroli - rgusmero@elet.polimi.it
+
+Want windows executale? 
+	See "RELEASES" above
+	
+	
+
+<b>Example usage:</b>
 
 <pre>
 edi2json edi.txt json.txt
@@ -103,9 +114,5 @@ produces json.txt:
 </pre>
 (please note the "\n" before "UNB")
 
-License: 3-caluse BSD
 
-Author: Riccardo Gusmeroli - rgusmero@elet.polimi.it
-
-Want windows executale? See "RELEASES"
 
