@@ -5,9 +5,15 @@ Convert EDIFACT to "raw" JSON
 
 A tiny utility to convert EDIFACT to "raw" JSON. With "raw" we mean that the final JSON is composed of "arrays of arrays of (arrays of)  strings". Higher level EDIFACT must be managed afterwards.
 
+Requirements:
+   - libedi 1.0.1+ <a href="http://code.google.com/p/libedi/">http://code.google.com/p/libedi/</a>
+   - json module from CCAN <a href="http://ccodearchive.net/info/json.html">http://ccodearchive.net/info/json.html</a>
+
 Example usage:
 
+<pre>
 edi2json edi.txt json.txt
+</pre>
 
 with edi.txt (from Wikipedia):
 
