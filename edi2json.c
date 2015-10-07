@@ -1,7 +1,7 @@
-/* @(#) $Id: edi2json.c 10 2014-12-01 07:30:00 $ */
+/* @(#) $Id: edi2json.c 10 2015-10-07 07:30:00 $ */
 
 /*
- * Copyright (c) 2014 Riccardo Gusmeroli.
+ * Copyright (c) 2014-2015 Riccardo Gusmeroli.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -67,7 +67,7 @@ int main(int argc, char **argv) {
 	size=ftell(f);
 	fseek(f,0,SEEK_SET);
 
-	msg=(char *)malloc(size*sizeof(char));
+	msg=(char *)malloc((size+1)*sizeof(char));  // +1 is for the (null) string terminator
 	if (!msg) {
 	
 		printf("NOT ENOUGH MEORY (SIZE=%d)\n",size*sizeof(char));
@@ -78,13 +78,14 @@ int main(int argc, char **argv) {
 	read_size=fread(msg,sizeof(char),size,f);
 	if (read_size!=size*sizeof(char)) {
 	
-		printf("ERROR READING INTO DUFFER (%d!=%d)\n",read_size,size*sizeof(char));
+		printf("ERROR READING INTO BUFFER (%d!=%d)\n",read_size,size*sizeof(char));
 		free(msg);
 		fclose(f);
 		return 3;
 		
 	} else {
 	
+		msg[read_size]='\0';
 		fclose(f);
 	}
 	
@@ -93,7 +94,7 @@ int main(int argc, char **argv) {
 	m=msg;
 	if (strncmp(m,"UNA",3)!=0) {
 	
-		// No UNA gibe, use default
+		// No UNA given, use default
 		params.version=-1; 
 		
 	} else {
